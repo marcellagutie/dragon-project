@@ -4,6 +4,7 @@ import { Login } from "../pages/Login";
 import { Home } from "../pages/Home";
 import { Create } from "../pages/Create";
 import { Edit } from "../pages/Edit";
+import { Detail } from "../pages/Detail";
 
 export default function RoutesApp() {
   return (
@@ -13,6 +14,7 @@ export default function RoutesApp() {
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
