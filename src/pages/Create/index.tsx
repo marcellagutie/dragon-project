@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { DragonService } from "../../services/api";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
-import { Input, Button } from './create.style'
+import { Input, Button, Container, WrapperButton } from './create.style'
 
 const dragonService = new DragonService();
 
@@ -28,6 +28,7 @@ export const Create = () => {
 
       if (!name || !type) {
         toast.error("Preencha todos os campos!");
+        setLoading(false);
         return;
       }
 
@@ -57,34 +58,31 @@ export const Create = () => {
   return (
     <>
       <Header />
-      <h2>Cadastrar dragão</h2>
-      <div className="container">
-        <div className="form">
-          <label>
-            <Input
-              type="text"
-              placeholder="Nome"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label>
-            <Input
-              type="text"
-              placeholder="Tipo"
-              onChange={(e) => setType(e.target.value)}
-            />
-          </label>
-          <label>
-            <Input type="date" onChange={(e) => setCreatedAt(e.target.value)} />
-          </label>
-          <Button className="button-add" onClick={handleRegister}>
-            Salvar
-          </Button>
-          <Button className="button-back" onClick={onBack}>
-            Voltar
-          </Button>
-        </div>
-      </div>
+      <Container>
+        <h2>Cadastrar dragão</h2>
+        <Input
+          type="text"
+          placeholder="Nome"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Input
+          type="text"
+          placeholder="Tipo"
+          onChange={(e) => setType(e.target.value)}
+        />
+        <Input
+          type="date"
+          onChange={(e) => setCreatedAt(e.target.value)}
+        />
+        <WrapperButton>
+        <Button to={''} onClick={handleRegister}>
+        Salvar
+       </Button>
+      <Button to={''} onClick={onBack}>
+        Voltar
+      </Button>
+        </WrapperButton>
+      </Container>
     </>
   );
 }

@@ -61,7 +61,7 @@ export const Card = () => {
         const imgUrl = `https://picsum.photos/301/301?random=${dragon.id}`
         return (
 
-          <CardWrapper>
+          <CardWrapper key={dragon.id.toString()}>
           <Link to={`/detail/${dragon.id}`} key={dragon.id.toString()}>
               <img src={imgUrl} alt="" width={'301px'} height={'301px'}/>
           </Link>
