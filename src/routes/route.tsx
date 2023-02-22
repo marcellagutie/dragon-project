@@ -5,6 +5,7 @@ import { Home } from "../pages/Home";
 import { Create } from "../pages/Create";
 import { Edit } from "../pages/Edit";
 import { Detail } from "../pages/Detail";
+import { NotFound } from "../pages/NotFound";
 
 export default function RoutesApp() {
   return (
@@ -15,6 +16,7 @@ export default function RoutesApp() {
         <Route path="/create" element={<Create />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
