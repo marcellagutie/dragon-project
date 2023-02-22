@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IDragon } from "../../utils/types/dragon.type";
 import { Loading } from "../Loading";
+import { Button, CardWrapper, Container, Describe, Links, Text, Title } from "./card.style";
 
 const dragonService = new DragonService();
 
@@ -55,31 +56,35 @@ export const Card = () => {
   }
 
   return (
-    <div className="container">
-      <div className="list-dragons">
-        {dragons.map((dragon) => {
-          return (
-            <div className="content">
-              <article key={dragon.id}>
-                <strong>Nome: {dragon.name}</strong>
-                <strong>Tipo: {dragon.type}</strong>
-                <Link className="button-details" to={`/detail/${dragon.id}`}>
+     <Container>
+      {dragons.map((dragon) => {
+        const imgUrl = `https://picsum.photos/301/301?random=${dragon.id}`
+        return (
+
+          <CardWrapper>
+          <Link to={`/detail/${dragon.id}`} key={dragon.id.toString()}>
+              <img src={imgUrl} alt="" width={'301px'} height={'301px'}/>
+          </Link>
+          <Describe>
+              <Text>#{dragon.id}</Text>
+              <Title>{dragon.name} | {dragon.type} </Title>
+              <Links>
+                <Button to={`/detail/${dragon.id}`}>
                   Detalhes
-                </Link>
-                <Link className="button-edit" to={`edit/${dragon.id}`}>
+                </Button>
+                <Button to={`edit/${dragon.id}`}>
                   Editar
-                </Link>
-                <button
-                  className="button-delete"
-                  onClick={() => deleteDragon(dragon.id)}
-                >
+                </Button>
+                <Button to={''} onClick={() => deleteDragon(dragon.id)}>
                   Excluir
-                </button>
-              </article>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+                </Button>
+              </Links>
+          </Describe>
+          </CardWrapper>
+
+        )
+
+      })}
+    </Container>
   );
 }
