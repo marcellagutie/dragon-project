@@ -12,6 +12,7 @@ export const Edit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [dragon, setDragon] = useState(null);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -19,35 +20,41 @@ export const Edit = () => {
 
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-  const fetchDragonDetails = async () => {
+
+  const getDragonInfos = async () => {
     try {
       setLoading(true);
 
       if (!id) {
-        toast.error("Id não encontrado!");
+        toast.error("Não achei o identificador :(");
         return null;
       }
 
       const response = await Api.getDragonById(id);
       const formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
 
+      setDragon(response.data);
       setName(response.data.name);
       setType(response.data.type);
       setCreatedAt(formatedDate);
-
       setLoading(false);
     } catch (error) {
-      toast.error("Dragão não encontrado");
+      toast.error("Poxa! Cadê o dragão que tava aqui?");
     }
   };
 
   useEffect(() => {
-    fetchDragonDetails();
+    getDragonInfos();
   }, []);
 
   const handleEdit = async () => {
     try {
       setLoading(true);
+
+      if (!id) {
+        toast.error("Não achei o identificador :(");
+        return null;
+      }
 
       const data = {
         name,
@@ -55,18 +62,13 @@ export const Edit = () => {
         createdAt,
       };
 
-      if (!id) {
-        toast.error("Id não encontrado!");
-        return null;
-      }
-
       await Api.putDragon(id, data);
 
-      toast.success("Dragão editado com sucesso");
+      toast.success("UHUHU! Seu dragão foi editado.");
       setLoading(false);
       navigate("/home");
     } catch (err) {
-      toast.error("Erro ao editar!");
+      toast.error("Ah não! Tive um erro ao editar");
       setLoading(false);
     }
   };

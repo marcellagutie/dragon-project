@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 export interface AuthContextData {
   user?: UserProps;
   isAuthenticated: boolean;
-  signIn: (credentials: SignInProps) => Promise<void>;
-  signOut: () => void;
+  login: (credentials: LoginProps) => Promise<void>;
+  logout: () => void;
 }
 
 export interface UserProps {
@@ -12,7 +12,7 @@ export interface UserProps {
   password?: string;
 }
 
-export interface SignInProps {
+export interface LoginProps {
   user?: string;
   password?: string;
 }

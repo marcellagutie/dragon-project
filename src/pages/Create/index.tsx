@@ -16,7 +16,15 @@ export const Create = () => {
   const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-  const handleRegister = async () => {
+  const validateFields = () => {
+    if (!name || !type) {
+      toast.error("Por favor, preencha todos os campos :)");
+      return false;
+    }
+    return true;
+  };
+
+  const handleCreate = async () => {
     try {
       setLoading(true);
 
@@ -26,19 +34,18 @@ export const Create = () => {
         createdAt,
       };
 
-      if (!name || !type) {
-        toast.error("Preencha todos os campos!");
+      if (!validateFields()) {
         setLoading(false);
         return;
       }
 
       await Api.postDragon(data);
 
-      toast.success("Dragão cadastrado com sucesso");
+      toast.success("Uhuhu! Seu dragão foi cadastrado.");
       setLoading(false);
       navigate("/home");
     } catch (err) {
-      toast.error("Erro ao cadastrar!");
+      toast.error("Houve um erro :(");
       setLoading(false);
     }
   };
@@ -71,7 +78,7 @@ export const Create = () => {
           onChange={(e) => setCreatedAt(e.target.value)}
         />
         <WrapperButton>
-        <Button to={''} onClick={handleRegister}>
+        <Button to={''} onClick={handleCreate}>
         Salvar
        </Button>
       <Button to={'/home'}>

@@ -6,11 +6,11 @@ import { RxExit } from "react-icons/rx";
 import { GiSeaDragon } from "react-icons/gi";
 
 export const Header = () => {
-  const { signOut } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onExit = () => {
-    signOut();
+    logout();
     navigate("/");
   };
 

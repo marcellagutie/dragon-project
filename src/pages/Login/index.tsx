@@ -5,7 +5,7 @@ import { AuthContext } from "../../utils/context/auth.contex";
 import { Input, Button } from './login.style'
 
 export const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,27 +14,20 @@ export const Login = () => {
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
 
-    try {
-      if (!email || !password) {
-        toast.error("Por favor, preencha todos os campos");
-        return;
-      }
+    if (!email || !password) {
+      return toast.error("Por favor, preencha todos os campos :)");
+    }
 
-      if (email === "test.login" && password === "123") {
-        const data = {
-          email: email,
-          password: password,
-        };
+    if (email === "test.login" && password === "123") {
+      const data = {
+        email,
+        password,
+      };
 
-        signIn(data);
-        navigate("/home");
-        return;
-      } else {
-        toast.error("Usuário ou senha incorreto");
-      }
-    } catch (error) {
-      toast.error("Usuário ou senha incorreto");
-      setLoading(false);
+      login(data);
+      navigate("/home");
+    } else {
+      toast.error("Usuário ou senha incorreto. Preencha com atenção");
     }
   };
 
