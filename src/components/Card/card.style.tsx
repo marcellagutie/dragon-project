@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 `;
 
 export const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #8dd0ed;
+    background-color: #80D856;
     color: white;
     margin-top: .5em;
     @media (max-width: 1200px) {
@@ -30,7 +30,7 @@ export const CardWrapper = styled.div`
 export const Describe = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #8dd0ed;
+    background-color: #80D856;
     padding: .5em;
 `
 
@@ -68,6 +68,6 @@ export const Button = styled(Link)`
   color: white;
   border-radius: 5px;
   &:hover {
-    background: #27357e;
+    background: #3FA110;
   }
 `;

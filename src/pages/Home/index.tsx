@@ -7,14 +7,6 @@ export const Home = () => {
   return (
     <>
       <Header />
-      <Wrapper>
-        <h1>
-          Dragões <GiSeaDragon/>
-        </h1>
-        <Button to="/create">
-          Cadastrar dragão
-        </Button>
-      </Wrapper>
       <Card />
     </>
   );

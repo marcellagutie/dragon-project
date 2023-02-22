@@ -14,10 +14,10 @@ export const Button = styled(Link)`
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
-  border-color: #e7e7e7;
+  border-color: #3FA110;
   color: black;
   border-radius: 5px;
   &:hover {
-    background: #e7e7e7;
+    background: #3FA110;
   }
 `;
