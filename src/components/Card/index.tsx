@@ -72,7 +72,7 @@ export const Card = () => {
                 <Button to={`/detail/${dragon.id}`}>
                   Detalhes
                 </Button>
-                <Button to={`edit/${dragon.id}`}>
+                <Button to={`/edit/${dragon.id}`}>
                   Editar
                 </Button>
                 <Button to={''} onClick={() => deleteDragon(dragon.id)}>

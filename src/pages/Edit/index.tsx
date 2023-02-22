@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { DragonService } from "../../services/api";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
-import { Input, Button } from './edit.style';
+import { Input, Button, WrapperButton, Container } from './edit.style';
 
 const dragonService = new DragonService();
 
@@ -29,9 +29,11 @@ export const Edit = () => {
       }
 
       const response = await dragonService.getDragonById(id);
+      let formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
+
       setName(response.data.name);
       setType(response.data.type);
-      setCreatedAt(response.data.createdAt);
+      setCreatedAt(formatedDate);
 
       setLoading(false);
     } catch (error) {
@@ -84,41 +86,37 @@ export const Edit = () => {
   return (
     <>
       <Header />
-      <h2>Editar dragão</h2>
-      <div className="container">
-        <label>
-          <Input
+      <Container>
+        <h2>Editar dragão</h2>
+        <Input
             type="text"
             name="name"
             placeholder="Nome"
             defaultValue={name}
             onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          <Input
+        />
+        <Input
             type="text"
             name="type"
             placeholder="Tipo"
             defaultValue={type}
             onChange={(e) => setType(e.target.value)}
-          />
-        </label>
-        <label>
-          <Input
+        />
+        <Input
             type="date"
             name="createdAt"
             defaultValue={createdAt}
             onChange={(e) => setCreatedAt(e.target.value)}
-          />
-        </label>
-        <Button className="button-add" onClick={handleEdit}>
-          Salvar
-        </Button>
-        <Button className="button-back" onClick={onBack}>
-          Voltar
-        </Button>
-      </div>
+        />
+        <WrapperButton>
+        <Button to={''} onClick={handleEdit}>
+        Salvar
+       </Button>
+      <Button to={''} onClick={onBack}>
+        Voltar
+      </Button>
+        </WrapperButton>
+      </Container>
     </>
   );
 }
