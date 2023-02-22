@@ -63,7 +63,7 @@ export const Card = () => {
               <article key={dragon.id}>
                 <strong>Nome: {dragon.name}</strong>
                 <strong>Tipo: {dragon.type}</strong>
-                <Link className="button-details" to={`/home/${dragon.id}`}>
+                <Link className="button-details" to={`/detail/${dragon.id}`}>
                   Detalhes
                 </Link>
                 <Link className="button-edit" to={`edit/${dragon.id}`}>
