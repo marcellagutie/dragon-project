@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { DragonService } from "../../services/api";
+import { api } from "../../services/api";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import { Input, Button, Container, WrapperButton } from './create.style'
 
-const dragonService = new DragonService();
+const Api = new api();
 
 export const Create = () => {
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ export const Create = () => {
         return;
       }
 
-      await dragonService.postDragon(data);
+      await Api.postDragon(data);
 
       toast.success("Dragão cadastrado com sucesso");
       setLoading(false);

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { DragonService } from "../../services/api";
+import { api } from "../../services/api";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IDragon } from "../../utils/types/dragon.type";
 import { Loading } from "../Loading";
 import { Button, CardWrapper, Container, Describe, Links, Text, Title } from "./card.style";
 
-const dragonService = new DragonService();
+const Api = new api();
 
 export const Card = () => {
   const [dragons, setDragons] = useState<IDragon[]>([]);
@@ -18,7 +18,7 @@ export const Card = () => {
     try {
       setLoading(true);
 
-      const response = await dragonService.getDragon();
+      const response = await Api.getDragon();
 
       setDragons(response.data);
 
@@ -32,7 +32,7 @@ export const Card = () => {
     try {
       setLoading(true);
 
-      await dragonService.deleteDragon(id);
+      await Api.deleteDragon(id);
 
       toast.success("Dragão deletado com sucesso!");
       fetchDragons();
@@ -63,7 +63,7 @@ export const Card = () => {
 
         return (
 
-          <CardWrapper key={dragon.id.toString()}>
+          <CardWrapper key={dragon.id?.toString()}>
             <img src={imgUrl} alt="" width={'301px'} height={'301px'}/>
           <Describe>
               <Text>#{dragon.id} | {formatedDate}</Text>
@@ -72,7 +72,12 @@ export const Card = () => {
                 <Button to={`/edit/${dragon.id}`}>
                   Editar
                 </Button>
-                <Button to={''} onClick={() => deleteDragon(dragon.id)}>
+                <Button
+                  to={''}
+                  onClick={() =>
+                    dragon.id ?
+                    deleteDragon(dragon.id) :
+                    toast.error("Erro ao deletar dragão!")}>
                   Excluir
                 </Button>
               </Links>

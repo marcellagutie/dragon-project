@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { DragonService } from "../../services/api";
+import { api } from "../../services/api";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import { Input, Button, WrapperButton, Container } from './edit.style';
 
-const dragonService = new DragonService();
+const Api = new api();
 
 export const Edit = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ export const Edit = () => {
         return null;
       }
 
-      const response = await dragonService.getDragonById(id);
+      const response = await Api.getDragonById(id);
       const formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
 
       setName(response.data.name);
@@ -60,7 +60,7 @@ export const Edit = () => {
         return null;
       }
 
-      await dragonService.putDragon(id, data);
+      await Api.putDragon(id, data);
 
       toast.success("Dragão editado com sucesso");
       setLoading(false);
