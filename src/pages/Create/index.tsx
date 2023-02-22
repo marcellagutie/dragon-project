@@ -43,10 +43,6 @@ export const Create = () => {
     }
   };
 
-  const onBack = () => {
-    navigate("/home");
-  };
-
   if (!isAuthenticated) {
     navigate("/");
   }
@@ -78,7 +74,7 @@ export const Create = () => {
         <Button to={''} onClick={handleRegister}>
         Salvar
        </Button>
-      <Button to={''} onClick={onBack}>
+      <Button to={'/home'}>
         Voltar
       </Button>
         </WrapperButton>

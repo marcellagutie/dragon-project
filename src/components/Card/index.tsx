@@ -59,19 +59,16 @@ export const Card = () => {
      <Container>
       {dragons.map((dragon) => {
         const imgUrl = `https://picsum.photos/301/301?random=${dragon.id}`
+        const formatedDate = new Date(dragon.createdAt).toLocaleDateString()
+
         return (
 
           <CardWrapper key={dragon.id.toString()}>
-          <Link to={`/detail/${dragon.id}`} key={dragon.id.toString()}>
-              <img src={imgUrl} alt="" width={'301px'} height={'301px'}/>
-          </Link>
+            <img src={imgUrl} alt="" width={'301px'} height={'301px'}/>
           <Describe>
-              <Text>#{dragon.id}</Text>
+              <Text>#{dragon.id} | {formatedDate}</Text>
               <Title>{dragon.name} | {dragon.type} </Title>
               <Links>
-                <Button to={`/detail/${dragon.id}`}>
-                  Detalhes
-                </Button>
                 <Button to={`/edit/${dragon.id}`}>
                   Editar
                 </Button>

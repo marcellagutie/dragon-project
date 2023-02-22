@@ -13,7 +13,7 @@ export const CardWrapper = styled.div`
     flex-direction: column;
     background-color: #80D856;
     color: white;
-    margin-top: .5em;
+    margin-bottom: 30px;
     @media (max-width: 1200px) {
     width: 216px;
     }
@@ -54,7 +54,8 @@ export const Text = styled.p`
 export const Links = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    gap: 20px;
+    margin: 0.5em 0;
 `
 
 export const Button = styled(Link)`

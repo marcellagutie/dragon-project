@@ -29,7 +29,7 @@ export const Edit = () => {
       }
 
       const response = await dragonService.getDragonById(id);
-      let formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
+      const formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
 
       setName(response.data.name);
       setType(response.data.type);
@@ -71,10 +71,6 @@ export const Edit = () => {
     }
   };
 
-  const onBack = () => {
-    navigate("/home");
-  };
-
   if (!isAuthenticated) {
     navigate("/");
   }
@@ -112,7 +108,7 @@ export const Edit = () => {
         <Button to={''} onClick={handleEdit}>
         Salvar
        </Button>
-      <Button to={''} onClick={onBack}>
+      <Button to={'/home'}>
         Voltar
       </Button>
         </WrapperButton>
