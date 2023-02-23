@@ -2,7 +2,7 @@ import { FormEvent, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/context/auth.contex";
-import { Input, Button } from './login.style'
+import { Input, Button, Container } from './login.style'
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
@@ -25,6 +25,7 @@ export const Login = () => {
       };
 
       login(data);
+      setLoading(false);
       navigate("/home");
     } else {
       toast.error("Usuário ou senha incorreto. Preencha com atenção");
@@ -32,28 +33,25 @@ export const Login = () => {
   };
 
   return (
-    <div className="container-center">
-      <div className="login">
-        <form onSubmit={handleLogin}>
-          <Input
-            placeholder="Digite seu email"
-            type="text"
-            value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          />
+    <Container onSubmit={handleLogin}>
+      <h2>Bem-vindx ao gerenciador de dragões</h2>
+        <Input
+          placeholder="Digite seu email"
+          type="text"
+          value={email}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+        />
 
-          <Input
-            placeholder="Sua senha"
-            type="password"
-            value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          />
+        <Input
+          placeholder="Sua senha"
+          type="password"
+          value={password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+        />
 
-          <Button type="submit" disabled={loading}>
-            Acessar
-          </Button>
-        </form>
-      </div>
-    </div>
+        <Button type="submit" disabled={loading}>
+          Acessar
+        </Button>
+    </Container>
   );
 }

@@ -14,9 +14,14 @@ export const Exit = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     cursor: pointer;
+    color: white;
+    margin-right: 20px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
     &:hover {
-    background: #3FA110;
-  }
+        background: #3FA110;
+    }
 `;
 
 export const Title = styled.h1`
@@ -37,4 +42,10 @@ export const Create = styled(Link)`
   cursor: pointer;
   color: white;
   margin-right: 20px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  &:hover {
+    background: #3FA110;
+  }
 `;
