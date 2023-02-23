@@ -1,8 +1,8 @@
+import img404 from './404.jpeg'
 export const NotFound = () => {
   return (
-    <div className="not-found">
-      <h1>404</h1>
-      <h2>Página não encontrada!</h2>
+    <div style={{alignItems: 'center'}}>
+      <img src={img404} alt="not found" />
     </div>
   );
 }
