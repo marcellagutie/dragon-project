@@ -32,4 +32,5 @@ Para logar, utilize as credencias:
 ### As imagens são apenas ilustrativas 🐲
   
 Caso queira me conhecer um pouco mais: https://www.linkedin.com/company/woman-s-code/ https://www.linkedin.com/in/marcella-gutierrez/ 
+
 Made with ♡
