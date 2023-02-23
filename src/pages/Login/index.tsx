@@ -6,7 +6,7 @@ import { Input, Button, Container } from './login.style'
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -14,13 +14,13 @@ export const Login = () => {
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
 
-    if (!email || !password) {
+    if (!user || !password) {
       return toast.error("Por favor, preencha todos os campos :)");
     }
 
-    if (email === "test.login" && password === "123") {
+    if (user === "test.login" && password === "123") {
       const data = {
-        email,
+        user,
         password,
       };
 
@@ -36,14 +36,14 @@ export const Login = () => {
     <Container onSubmit={handleLogin}>
       <h2>Bem-vindx ao gerenciador de dragões</h2>
         <Input
-          placeholder="Digite seu email"
+          placeholder="Digite seu usuário"
           type="text"
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          value={user}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser(e.target.value)}
         />
 
         <Input
-          placeholder="Sua senha"
+          placeholder="Digite sua senha"
           type="password"
           value={password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
