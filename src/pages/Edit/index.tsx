@@ -12,7 +12,6 @@ export const Edit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [dragon, setDragon] = useState(null);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -33,7 +32,6 @@ export const Edit = () => {
       const response = await Api.getDragonById(id);
       const formatedDate = new Date(response.data.createdAt).toISOString().split('T')[0]
 
-      setDragon(response.data);
       setName(response.data.name);
       setType(response.data.type);
       setCreatedAt(formatedDate);
